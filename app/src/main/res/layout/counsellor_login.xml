@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="232dp"
+        android:layout_marginTop="32dp">
+
+        <ImageView
+            android:layout_width="354dp"
+            android:layout_height="231dp"
+            android:src="@drawable/love"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.666" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="79dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="cursive"
+        android:text="WELCOME BACK"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textColorLink="#4CAF50"
+        android:textSize="40dp" />
+
+    <EditText
+        android:id="@+id/Email"
+        android:layout_width="match_parent"
+        android:layout_height="59dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/edittext_background"
+        android:ems="10"
+        android:hint="Email Address"
+        android:inputType="text" />
+    <EditText
+        android:id="@+id/Password"
+        android:layout_width="match_parent"
+        android:layout_height="62dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/edittext_background"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/logInbtn"
+        android:layout_width="match_parent"
+        android:layout_height="61dp"
+        android:fontFamily="sans-serif"
+        android:textColorLink="#009688"
+        android:textSize="25dp"
+        android:text="Log In" />
+
+
+</LinearLayout>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#C0D6E4"
+    android:orientation="vertical"
+    >
+
+
+    <EditText
+        android:id="@+id/Name"
+        android:layout_width="match_parent"
+        android:layout_height="59dp"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/edittext_background"
+        android:ems="10"
+        android:hint="Name and Surname"
+        android:inputType="text" />
+
+
+    <EditText
+        android:id="@+id/Email"
+        android:layout_width="match_parent"
+        android:layout_height="59dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/edittext_background"
+        android:ems="10"
+        android:hint="Email Address"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/Type"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/edittext_background"
+        android:ems="10"
+        android:hint="Type of counsellor"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/Password"
+        android:layout_width="match_parent"
+        android:layout_height="62dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/edittext_background"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword" />
+
+    <EditText
+        android:id="@+id/confirm"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:background="@drawable/edittext_background"
+        android:hint="Re-enter Password"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/SignUp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:fontFamily="sans-serif"
+        android:textColorLink="#009688"
+        android:textSize="25dp"
+        android:text="SignUp" />
+
+    <TextView
+        android:id="@+id/logInClick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:fontFamily="serif"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:onClick="logIn"
+        android:text="Already have an account?\nlog in!!" />
+</LinearLayout>

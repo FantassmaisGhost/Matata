@@ -17,6 +17,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.couselling.activity.chatActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -60,7 +61,7 @@ public class client_logIn extends AppCompatActivity {
                             public void onResponse(String response) {
                                     if (response.equals("success")) {
                                         Toast.makeText(client_logIn.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                                        Intent intent = new Intent(client_logIn.this, client_logIn.class);
+                                        Intent intent = new Intent(client_logIn.this, chatActivity.class);
                                         startActivity(intent);
                                         //finish();
 

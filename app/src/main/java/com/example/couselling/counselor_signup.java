@@ -1,13 +1,15 @@
 package com.example.couselling;
 
+import static com.example.couselling.R.layout.prof;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.textclassifier.TextLinks;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,14 +20,28 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+
+import okhttp3.Call;
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.RequestBody;
+
+
+
 public class counselor_signup extends AppCompatActivity {
-    EditText Username, Email, Pass, EPass,type;
+    EditText Username, Email, Pass, EPass, type;
     Button Sign;
     TextView Error;
-    String name,email,password,word,typeofcounsel;
+    String name, email, password, word, typeofcounsel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +52,9 @@ public class counselor_signup extends AppCompatActivity {
         Pass = findViewById(R.id.Password);
         EPass = findViewById(R.id.confirm);
         Sign = findViewById(R.id.SignUp);
-       // Error = findViewById(R.id.status);
+        // Error = findViewById(R.id.status);
+
+
         TextView textView = findViewById(R.id.singUpClick);
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,7 +65,7 @@ public class counselor_signup extends AppCompatActivity {
             }
         });
 
-        Sign.setOnClickListener(new View.OnClickListener(){
+        Sign.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -60,14 +78,16 @@ public class counselor_signup extends AppCompatActivity {
                 RequestQueue queue = Volley.newRequestQueue(counselor_signup.this);
                 String url = "https://lamp.ms.wits.ac.za/home/s2651487/Counsellor_Sign_Up.php";
 
+
+
                 StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
-                                if (password.equals(word)){
+                                if (password.equals(word)) {
                                     if (response.equals("success")) {
                                         Toast.makeText(counselor_signup.this, "SignUp successful", Toast.LENGTH_SHORT).show();
-                                        Intent intent = new Intent(counselor_signup.this, client_logIn.class);
+                                        Intent intent = new Intent(counselor_signup.this, Counellor_LogIn.class);
                                         startActivity(intent);
                                         finish();
 
@@ -86,8 +106,8 @@ public class counselor_signup extends AppCompatActivity {
                     }
 
 
-                }){
-                    protected Map<String, String> getParams(){
+                }) {
+                    protected Map<String, String> getParams() {
                         Map<String, String> paramV = new HashMap<>();
                         paramV.put("FullName", name);
                         paramV.put("Email", email);
@@ -98,7 +118,10 @@ public class counselor_signup extends AppCompatActivity {
                 };
                 queue.add(stringRequest);
             }
-        });
-    }
-}
 
+
+        });
+
+    }
+
+}

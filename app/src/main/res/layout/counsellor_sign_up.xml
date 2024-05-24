@@ -70,13 +70,15 @@
         android:text="SignUp" />
 
     <TextView
-        android:id="@+id/logInClick"
+        android:id="@+id/singUpClick"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="20dp"
         android:fontFamily="serif"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:onClick="logIn"
+        android:onClick="SignUp"
         android:text="Already have an account?\nlog in!!" />
+
+
 </LinearLayout>

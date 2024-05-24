@@ -60,5 +60,15 @@
         android:onClick="LogIn"
         android:text="Log In" />
 
+    <TextView
+        android:id="@+id/logInClick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:fontFamily="serif"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:text="Dont have an account?? Click here for Sign up" />
+
 
 </LinearLayout>

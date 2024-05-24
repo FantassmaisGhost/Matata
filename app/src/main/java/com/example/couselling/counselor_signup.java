@@ -37,7 +37,7 @@ public class counselor_signup extends AppCompatActivity {
         EPass = findViewById(R.id.confirm);
         Sign = findViewById(R.id.SignUp);
        // Error = findViewById(R.id.status);
-        TextView textView = findViewById(R.id.logInClick);
+        TextView textView = findViewById(R.id.singUpClick);
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,7 +69,7 @@ public class counselor_signup extends AppCompatActivity {
                                         Toast.makeText(counselor_signup.this, "SignUp successful", Toast.LENGTH_SHORT).show();
                                         Intent intent = new Intent(counselor_signup.this, client_logIn.class);
                                         startActivity(intent);
-                                        //finish();
+                                        finish();
 
                                     } else {
                                         Toast.makeText(counselor_signup.this, "Check Information You Gave me", Toast.LENGTH_SHORT).show();

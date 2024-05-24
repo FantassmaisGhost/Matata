@@ -1,10 +1,12 @@
 package com.example.couselling;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,12 +26,24 @@ public class Counellor_LogIn extends AppCompatActivity {
     Button LogIn;
     String email,password,name;
 
+    TextView t;
+    @Override
     protected void onCreate(Bundle savedInstance) {
         super.onCreate(savedInstance);
         setContentView(R.layout.counsellor_login);
         Email = findViewById(R.id.Email);
         Pass = findViewById(R.id.Password);
         LogIn = findViewById(R.id.logInbtn);
+        t= findViewById(R.id.LogInClick);
+
+        t.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Perform your action here
+                Intent intent = new Intent(Counellor_LogIn.this, counselor_signup.class);
+                startActivity(intent);
+            }
+        });
 
         LogIn.setOnClickListener(new View.OnClickListener() {
             @Override

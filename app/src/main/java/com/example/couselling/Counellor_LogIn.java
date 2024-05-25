@@ -60,7 +60,7 @@ public class Counellor_LogIn extends AppCompatActivity {
                             public void onResponse(String response) {
                                 if (response.equals("success")) {
                                     Toast.makeText(Counellor_LogIn.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(Counellor_LogIn.this, MainActivity.class);
+                                    Intent intent = new Intent(Counellor_LogIn.this, Profile.class);
                                     startActivity(intent);
                                     //finish();
 

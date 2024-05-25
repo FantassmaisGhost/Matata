@@ -8,10 +8,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/hands"
     tools:context=".MainActivity"
     tools:ignore="ExtraText">
-
 
     <TextView
         android:layout_width="match_parent"
@@ -23,6 +21,24 @@
         android:textColor="@color/black"
         android:textColorLink="#4CAF50"
         android:textSize="70dp" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="232dp"
+        android:layout_marginTop="32dp">
+
+        <ImageView
+            android:layout_width="354dp"
+            android:layout_height="231dp"
+            android:src="@drawable/therapy"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.666" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
 
     <Button
         android:id="@+id/CSignUp"

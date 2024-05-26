@@ -2,6 +2,7 @@ package com.example.couselling;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -42,6 +43,7 @@ public class Counellor_LogIn extends AppCompatActivity {
                 // Perform your action here
                 Intent intent = new Intent(Counellor_LogIn.this, counselor_signup.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -60,10 +62,13 @@ public class Counellor_LogIn extends AppCompatActivity {
                             public void onResponse(String response) {
                                 if (response.equals("success")) {
                                     Toast.makeText(Counellor_LogIn.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(Counellor_LogIn.this, Profile.class);
-                                    startActivity(intent);
-                                    //finish();
-
+                                    Intent fuck = new Intent(Counellor_LogIn.this, Profile.class);
+                                    SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+                                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                                    editor.putString("EMAIL", email);
+                                    editor.apply();
+                                    startActivity(fuck);
+                                    finish();
                                 } else {
                                     Toast.makeText(Counellor_LogIn.this, "Check Information You Gave me", Toast.LENGTH_SHORT).show();
                                 }// end of else
@@ -72,7 +77,6 @@ public class Counellor_LogIn extends AppCompatActivity {
                         }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError volleyError) {
-
                     }
 
 

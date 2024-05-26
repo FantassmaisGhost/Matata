@@ -40,6 +40,7 @@
         android:ems="10"
         android:hint="Email Address"
         android:inputType="text" />
+
     <EditText
         android:id="@+id/Password"
         android:layout_width="match_parent"

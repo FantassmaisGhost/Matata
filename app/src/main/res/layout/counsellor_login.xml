@@ -63,11 +63,11 @@
         android:id="@+id/LogInClick"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15dp"
         android:fontFamily="serif"
+        android:text="Dont have an account?? Click here for Sign up"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:text="Dont have an account?? Click here for Sign up" />
+        android:textSize="15dp" />
 
 
 </LinearLayout>

@@ -3,6 +3,7 @@ package com.example.couselling;
 import static com.example.couselling.R.layout.prof;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.textclassifier.TextLinks;
@@ -33,7 +34,6 @@ import okhttp3.Call;
 import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
-
 
 
 public class counselor_signup extends AppCompatActivity {
@@ -75,6 +75,11 @@ public class counselor_signup extends AppCompatActivity {
                 typeofcounsel = String.valueOf(type.getText());
                 password = String.valueOf(Pass.getText());
                 word = String.valueOf(EPass.getText());
+                //SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+                //SharedPreferences.Editor editor = sharedPreferences.edit();
+                //editor.putString("NAME", name);
+                //editor.putString("EMAIL", email);
+                //editor.apply();
                 RequestQueue queue = Volley.newRequestQueue(counselor_signup.this);
                 String url = "https://lamp.ms.wits.ac.za/home/s2651487/Counsellor_Sign_Up.php";
 
@@ -88,6 +93,11 @@ public class counselor_signup extends AppCompatActivity {
                                     if (response.equals("success")) {
                                         Toast.makeText(counselor_signup.this, "SignUp successful", Toast.LENGTH_SHORT).show();
                                         Intent intent = new Intent(counselor_signup.this, Counellor_LogIn.class);
+                                        //SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+                                        //SharedPreferences.Editor editor = sharedPreferences.edit();
+                                        //editor.putString("NAME", name);
+                                        //editor.putString("EMAIL", email);
+                                        //editor.apply();
                                         startActivity(intent);
                                         finish();
 

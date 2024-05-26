@@ -28,7 +28,11 @@
         <activity android:name=".client_SignUp" />
         <activity android:name=".client_logIn" />
         <activity android:name=".Counellor_LogIn" />
-        <activity android:name=".Profile"/>
+        <activity android:name=".Profile" />
+        <activity android:name=".NewSelectApp" />
+        <activity android:name=".client_Profile" />
+        <activity android:name=".Select_Names" />
+
     </application>
 
 </manifest>

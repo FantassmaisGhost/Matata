@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical"
     tools:context=".MainActivity"
     tools:ignore="ExtraText">
 
@@ -21,6 +21,7 @@
         android:textColor="@color/black"
         android:textColorLink="#4CAF50"
         android:textSize="70dp" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="232dp"
@@ -38,16 +39,14 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-
-
     <Button
         android:id="@+id/CSignUp"
         android:layout_width="match_parent"
         android:layout_height="74dp"
         android:layout_marginTop="80dp"
         android:fontFamily="sans-serif"
-        android:text="Counsellor"
         android:onClick="SignUpPage"
+        android:text="Counsellor"
         android:textColorLink="#009688"
         android:textSize="25dp" />
 
@@ -56,8 +55,8 @@
         android:layout_width="match_parent"
         android:layout_height="72dp"
         android:layout_marginTop="40dp"
-        android:textSize="25dp"
-        android:onClick="clientSignUpPage"
         android:fontFamily="sans-serif"
-        android:text="Client" />
+        android:onClick="clientSignUpPage"
+        android:text="Client"
+        android:textSize="25dp" />
 </LinearLayout>

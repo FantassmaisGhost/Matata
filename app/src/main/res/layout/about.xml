@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@color/grey_10"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:id="@+id/typeAbout"
+        android:layout_marginTop="90dp"
+        android:background="@drawable/whit_back"
+        android:hint="What topics would you like to talk about with your client"
+        >
+
+    </EditText>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="save"
+        android:id="@+id/saveAbout"
+        android:layout_marginTop="20dp"
+
+        />
+</LinearLayout>

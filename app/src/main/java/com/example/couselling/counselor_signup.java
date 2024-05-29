@@ -72,6 +72,7 @@ public class counselor_signup extends AppCompatActivity {
                 //Error.setVisibility(View.GONE);
                 name = String.valueOf(Username.getText());
                 email = String.valueOf(Email.getText());
+
                 typeofcounsel = String.valueOf(type.getText());
                 password = String.valueOf(Pass.getText());
                 word = String.valueOf(EPass.getText());
@@ -93,6 +94,7 @@ public class counselor_signup extends AppCompatActivity {
                                     if (response.equals("success")) {
                                         Toast.makeText(counselor_signup.this, "SignUp successful", Toast.LENGTH_SHORT).show();
                                         Intent intent = new Intent(counselor_signup.this, Counellor_LogIn.class);
+
                                         //SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
                                         //SharedPreferences.Editor editor = sharedPreferences.edit();
                                         //editor.putString("NAME", name);

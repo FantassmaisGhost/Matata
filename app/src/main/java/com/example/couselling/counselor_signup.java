@@ -103,9 +103,13 @@ public class counselor_signup extends AppCompatActivity {
                                         startActivity(intent);
                                         finish();
 
-                                    } else {
-                                        Toast.makeText(counselor_signup.this, "Check Information You Gave me", Toast.LENGTH_SHORT).show();
+                                    } else if (response.equals("Information")){
+                                        Toast.makeText(counselor_signup.this, "Information is already taken!!", Toast.LENGTH_SHORT).show();
                                     }// end of else
+                                    else {
+                                        Toast.makeText(counselor_signup.this, "Check Information you gave me", Toast.LENGTH_SHORT).show();
+
+                                    }
                                 }  // end of if
                                 else {
                                     Toast.makeText(counselor_signup.this, "Passwords Do Not Match", Toast.LENGTH_SHORT).show();

@@ -34,11 +34,9 @@ public class Select_Names extends AppCompatActivity {
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, nameList);
         nameListView.setAdapter(adapter);
 
-        // Get the selected type from the intent
         Intent intent = getIntent();
         String selectedType = intent.getStringExtra("SELECTED_TYPE");
 
-        // Fetch names from the server based on the selected type
         fetchNamesFromServer(selectedType);
     }
     public void fetchNamesFromServer(final String selectedType) {
@@ -50,12 +48,9 @@ public class Select_Names extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        // Split the response by newline characters
                         String[] names = response.split("\n");
-                        // Clear the list before adding new items
                         nameList.clear();
                         nameList.addAll(Arrays.asList(names));
-                        // Notify the adapter to update the ListView
                         adapter.notifyDataSetChanged();
                     }
                 },

@@ -185,13 +185,27 @@
 
                     </TextView>
 
-                    <EditText
+                    <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="100dp"
-                        android:background="@drawable/edittext_background"
-                        android:hint="what are the problems you like dealing with">
+                        android:layout_height="wrap_content"
+                        android:id="@+id/showAbout"
+                        android:textColor="@color/black"
+                        >
 
-                    </EditText>
+
+                    </TextView>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/editAbout"
+                        android:text="Edit About here"
+                        android:textSize="20sp"
+                        android:textColor="@color/blue"
+                        >
+
+                    </TextView>
 
 
                 </LinearLayout>

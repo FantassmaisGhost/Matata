@@ -78,9 +78,12 @@ public class client_SignUp extends AppCompatActivity{
                                           startActivity(intent);
                                           //finish();
 
-                                      } else {
-                                          Toast.makeText(client_SignUp.this, "Check Information You Gave me", Toast.LENGTH_SHORT).show();
+                                      } else if (response.equals("Information")){
+                                          Toast.makeText(client_SignUp.this, "Information is already taken!!!", Toast.LENGTH_SHORT).show();
                                       }// end of else
+                                      else {
+                                          Toast.makeText(client_SignUp.this, "Check Information you gave me", Toast.LENGTH_SHORT).show();
+                                      }
                                   }  // end of if
                                 else {
                                     Error.setText("Passwords Do Not Match!!!");

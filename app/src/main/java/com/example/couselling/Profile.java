@@ -75,7 +75,6 @@ public class Profile extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        // Handle the response
                         handleResponse(response);
                     }
                 },
@@ -89,7 +88,6 @@ public class Profile extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
-                // Add parameters (selected word) to the request
                 params.put("Email", shit);
                 return params;
             }
@@ -100,6 +98,6 @@ public class Profile extends AppCompatActivity {
     }
     private void handleResponse(String response) {
         // Set the name to a TextView
-        t2.setText(response.trim()); // Trim to remove any leading or trailing whitespace
+        t2.setText(response.trim());
     }
 }// end of class

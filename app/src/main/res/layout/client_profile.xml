@@ -171,7 +171,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="100dp"
                         android:background="@drawable/edittext_background"
-                        android:hint="what are the problems you like dealing with">
+                        android:hint="what are the problems you are dealing with">
 
                     </EditText>
 

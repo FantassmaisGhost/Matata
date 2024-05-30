@@ -207,6 +207,12 @@
 
                     </TextView>
 
+                    <Button
+                        android:id="@+id/pule"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="chat" />
+
 
                 </LinearLayout>
 
@@ -214,4 +220,5 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

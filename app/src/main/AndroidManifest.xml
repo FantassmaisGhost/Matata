@@ -33,6 +33,8 @@
         <activity android:name=".NewSelectApp" />
         <activity android:name=".client_Profile" />
         <activity android:name=".Select_Names" />
+        <activity android:name=".mainchat" />
+
 
         <activity android:name=".editAbout"/>
 

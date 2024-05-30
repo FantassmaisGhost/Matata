@@ -36,13 +36,17 @@ import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
 
 public class Profile extends AppCompatActivity {
-    //EditText Username = findViewById(R.id.Name);
-    //EditText Email = findViewById(R.id.Email);
+   private static final int EDIT_ABOUT_REQUEST=1;
     String name;
     String serverResponse;
     LinearLayout l;
     TextView t;
     TextView t2;
+    TextView about;
+    TextView showAbout;
+    String lastAbout;
+    String email;
+    String Info;
 
     LinearLayout l2;
     //String url2 = "https://lamp.ms.wits.ac.za/home/s2651487/getCounsellor.php";
@@ -52,16 +56,46 @@ public class Profile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.prof);
+        showAbout = findViewById(R.id.showAbout);
+        l=findViewById(R.id.chat_layout);
+        about=findViewById(R.id.editAbout);
         t = findViewById(R.id.profileemail);
         t2 = findViewById(R.id.profilename);
+        Intent i= getIntent();
+        if(i!=null){
+           Info = i.getStringExtra("Info");
+        }
+        showAbout.setText(Info);
         see();
+
+
+        about.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Perform your action here
+                Intent intent = new Intent(Profile.this, editAbout.class);
+                intent.putExtra("Email",email);
+                startActivityForResult(intent,EDIT_ABOUT_REQUEST);
+            }
+        });
     }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data){
+        super.onActivityResult(requestCode,resultCode,data);
+        if(requestCode==EDIT_ABOUT_REQUEST && requestCode==RESULT_OK && data!=null){
+            String Info=data.getStringExtra("Info");
+            showAbout.setText(Info);
+        }
+    }
+
+
     public void see(){
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
-        String email = sharedPreferences.getString("EMAIL", "");
+        email = sharedPreferences.getString("EMAIL", "");
         t.setText(email);
         String shit = String.valueOf(t.getText());
         work(shit);
+
 
     }// end of see
     public void work(final String shit) {
@@ -100,4 +134,8 @@ public class Profile extends AppCompatActivity {
         // Set the name to a TextView
         t2.setText(response.trim());
     }
+
+
+
+    //}
 }// end of class

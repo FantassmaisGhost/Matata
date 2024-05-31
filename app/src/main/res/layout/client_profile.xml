@@ -156,24 +156,9 @@
 
                     </LinearLayout>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:text="About"
-                        android:textColor="@color/black"
-                        android:textSize="30dp"
-                        android:textStyle="bold">
 
-                    </TextView>
 
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="100dp"
-                        android:background="@drawable/edittext_background"
-                        android:hint="what are the problems you are dealing with">
 
-                    </EditText>
 
 
                 </LinearLayout>

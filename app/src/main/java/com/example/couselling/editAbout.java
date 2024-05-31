@@ -3,6 +3,7 @@ package com.example.couselling;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -46,6 +47,7 @@ public class editAbout extends AppCompatActivity {
     String email;
     String id;
     String aboutInfo;
+    private static final String TAG="editAbout";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -54,24 +56,27 @@ public class editAbout extends AppCompatActivity {
        // nothing=new TextView(this);
         about = findViewById(R.id.typeAbout);
         saveAbout = findViewById(R.id.saveAbout);
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        email = sharedPreferences.getString("EMAIL", "");
 
-        Intent i= getIntent();
-        if(i!=null){
-            email= i.getStringExtra("Email");
-        }
+//        Intent i= getIntent();
+//        if(i!=null){
+//            email= i.getStringExtra("Email");
+//        }
 
-        ed_About= about.getText().toString();
+
 
         //sendAbout(id,ed_About);
         saveAbout.setOnClickListener(new View.OnClickListener() {
+
               @Override
             public void onClick(View v) {
+                  ed_About= about.getText().toString();
                   if(ed_About.isEmpty()){
                       Toast.makeText(editAbout.this, "Please enter something",Toast.LENGTH_SHORT).show();
                   }else{
                       getID(email, ed_About);
-                      Intent i= new Intent(editAbout.this, Profile.class);
-                      startActivity(i);
+//
                   }
 
             }
@@ -80,28 +85,16 @@ public class editAbout extends AppCompatActivity {
 
         //see();
     }
-//    public void see(){
-//        SharedPreferences sharedPreferences= getSharedPreferences()
-//        //SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
-//        //String email = sharedPreferences.getString("EMAIL", "");
-//        //String email2 = String.valueOf(t.getText());
-//        //sendAbout(email, ed_About);
-//        saveAbout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                save(email);
-//            }
-//        });
-//    }
+//
     OkHttpClient client= new OkHttpClient();
     public void getID(String email,String about){
-        String url="https://lamp.ms.wits.ac.za/s2651487/getCounsellorbyEmail.php";
-        RequestBody formBody= new FormBody.Builder()
-                .add("Email",email)
-                .build();
+
+        String url="https://lamp.ms.wits.ac.za/home/s2651487/getCounsellorbyEmail.php?Email="+email;
+        Log.d(TAG, "getID: email="+email);
+
+        Log.d(TAG, "getID: url"+ url);
         Request request = new Request.Builder()
                 .url(url)
-                .post(formBody)
                 .build();
 
 
@@ -110,6 +103,7 @@ public class editAbout extends AppCompatActivity {
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
                 e.printStackTrace();
                 runOnUiThread(()-> Toast.makeText(editAbout.this, "Failed to get ID"+e.getMessage(), Toast.LENGTH_SHORT).show());
+                Log.e(TAG, "onFailure: Failed to get ID",e );
             }
 
             @Override
@@ -117,9 +111,11 @@ public class editAbout extends AppCompatActivity {
                 if(response.isSuccessful()){
                     try {
                         String responseData = response.body().string();
+                        Log.d(TAG, "onResponse: Response Data:"+responseData);
                         JSONObject jsonObject = new JSONObject(responseData);
                         if (jsonObject.has("C_ID")) {
                             id = jsonObject.getString("C_ID");
+                            Log.d(TAG, "onResponse: Counsellor id:"+id);
                             sendAbout(id,about);
                         }
                         else{
@@ -134,6 +130,7 @@ public class editAbout extends AppCompatActivity {
                         }
                     }catch(JSONException e){
                         e.printStackTrace();
+                        Log.e(TAG, "onResponse: JSON parsing error",e );
 
                     }
 
@@ -146,38 +143,33 @@ public class editAbout extends AppCompatActivity {
     }
     public void save(String id){
         //getID(email,ed_About);
-        RequestBody formBody= new FormBody.Builder()
-                .add("C_ID", id)
-                .build();
         Request request= new Request.Builder()
-                .url("https://lamp.ms.wits.ac.za/s2651487/getAbout.php")
-                .post(formBody)
+                .url("https://lamp.ms.wits.ac.za/home/s2651487/getAbout.php?C_ID="+id)
                 .build();
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
                 e.printStackTrace();
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Toast.makeText(editAbout.this, "Failed to get about info: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
+               runOnUiThread(()->Toast.makeText(editAbout.this,"Failed to get about info"+e.getMessage(),Toast.LENGTH_SHORT).show());
+                Log.e(TAG, "onFailure: Failed to get about info",e );
             }
 
             @Override
             public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
                 if(response.isSuccessful()){
                         String responseStr = response.body().string();
-                        processJSON(responseStr);
+                    Log.d(TAG, "onResponse: responseStr="+responseStr);
+
+
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                Intent resultIntent = new Intent();
-                                resultIntent.putExtra("AboutInfo", aboutInfo);
-                                setResult(RESULT_OK, resultIntent);
-                                finish();
-
+                                processJSON(responseStr);
+                                Log.d(TAG, "onResponse: Aboutinfo="+aboutInfo);
+                                Intent i= new Intent(editAbout.this, Profile.class);
+                                i.putExtra("AboutInfo",aboutInfo);
+                                startActivity(i);
+//
                             }
                         });
                 }
@@ -189,7 +181,7 @@ public class editAbout extends AppCompatActivity {
     }
 
     public void sendAbout(String id,String about){
-        String url ="https://lamp.ms.wits.ac.za/s2651487/About.php";
+        String url ="https://lamp.ms.wits.ac.za/home/s2651487/About.php";
         RequestBody formBody= new FormBody.Builder()
                 .add("C_ID",id)
                 .add("About",about)
@@ -203,6 +195,7 @@ public class editAbout extends AppCompatActivity {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
                 e.printStackTrace();
+                Log.e(TAG, "onFailure: Failed to send info", e);
             }
 
             @Override
@@ -230,14 +223,18 @@ public class editAbout extends AppCompatActivity {
 
 
     public void processJSON(String json){
+
         try {
-            JSONObject item=new JSONObject(json);
-            if (item.has("About")) {
-                aboutInfo = item.getString("About");
+            JSONArray all=new JSONArray(json);
+            for(int i=0;i<all.length();i++){
+                JSONObject item=all.getJSONObject(i);
+                    aboutInfo = item.getString("About");
+
             }
 
         } catch (JSONException e) {
             e.printStackTrace();
+            Log.e(TAG, "processJSON: JSON Processing error",e );
         }
     }
 

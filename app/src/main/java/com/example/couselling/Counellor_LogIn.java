@@ -62,12 +62,12 @@ public class Counellor_LogIn extends AppCompatActivity {
                             public void onResponse(String response) {
                                 if (response.equals("success")) {
                                     Toast.makeText(Counellor_LogIn.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                                    Intent fuck = new Intent(Counellor_LogIn.this, Profile.class);
-                                    SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
-                                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                                    editor.putString("EMAIL", email);
-                                    editor.apply();
-                                    startActivity(fuck);
+                                    Intent i = new Intent(Counellor_LogIn.this, Profile.class);
+                                        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+                                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                                        editor.putString("EMAIL", email);
+                                        editor.apply();
+                                    startActivity(i);
                                     finish();
                                 } else {
                                     Toast.makeText(Counellor_LogIn.this, "Check Information You Gave me", Toast.LENGTH_SHORT).show();

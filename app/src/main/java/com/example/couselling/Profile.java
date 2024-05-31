@@ -3,6 +3,7 @@ package com.example.couselling;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -47,6 +48,7 @@ public class Profile extends AppCompatActivity {
     String lastAbout;
     String email;
     String Info;
+    private static final String TAG="Profile";
 
     LinearLayout l2;
     //String url2 = "https://lamp.ms.wits.ac.za/home/s2651487/getCounsellor.php";
@@ -61,11 +63,7 @@ public class Profile extends AppCompatActivity {
         about=findViewById(R.id.editAbout);
         t = findViewById(R.id.profileemail);
         t2 = findViewById(R.id.profilename);
-        Intent i= getIntent();
-        if(i!=null){
-           Info = i.getStringExtra("Info");
-        }
-        showAbout.setText(Info);
+
         see();
 
 
@@ -74,30 +72,34 @@ public class Profile extends AppCompatActivity {
             public void onClick(View v) {
                 // Perform your action here
                 Intent intent = new Intent(Profile.this, editAbout.class);
-                intent.putExtra("Email",email);
-                startActivityForResult(intent,EDIT_ABOUT_REQUEST);
+                startActivity(intent);
+
+
+              // intent.putExtra("Email",email);
+               // startActivityForResult(intent,EDIT_ABOUT_REQUEST);
             }
         });
-    }
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data){
-        super.onActivityResult(requestCode,resultCode,data);
-        if(requestCode==EDIT_ABOUT_REQUEST && requestCode==RESULT_OK && data!=null){
-            String Info=data.getStringExtra("Info");
-            showAbout.setText(Info);
-        }
-    }
 
+        Info=getIntent().getStringExtra("AboutInfo");
+        Log.d(TAG, "onCreate: Info=" +Info);
+        showAbout.setText(Info);
+
+
+
+
+    }
 
     public void see(){
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
         email = sharedPreferences.getString("EMAIL", "");
         t.setText(email);
-        String shit = String.valueOf(t.getText());
-        work(shit);
+        String v = String.valueOf(t.getText());
+        work(v);
 
 
     }// end of see
+
+//
     public void work(final String shit) {
         String url2 = "https://lamp.ms.wits.ac.za/home/s2651487/getCounsellor.php";
 

@@ -75,7 +75,7 @@ public class client_logIn extends AppCompatActivity {
                             public void onResponse(String response) {
                                     if (response.equals("success")) {
                                         Toast.makeText(client_logIn.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                                        Intent intent = new Intent(client_logIn.this, NewSelectApp.class);
+                                        Intent intent = new Intent(client_logIn.this, client_Profile.class);
                                         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
                                         SharedPreferences.Editor editor = sharedPreferences.edit();
                                         editor.putString("EMAIL", email);

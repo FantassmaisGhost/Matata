@@ -189,7 +189,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/showAbout"
-                        android:textSize="30dp"
+                        android:textSize="20sp"
                         android:textColor="@color/black"
                         >
 
@@ -201,7 +201,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/editAbout"
-                        android:text="Edit About here"
+                        android:text="Edit here"
                         android:textSize="20sp"
                         android:textColor="@color/blue"
                         >

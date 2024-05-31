@@ -155,16 +155,25 @@
 
 
                     </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="Get help here"
+                        android:id="@+id/help"
+                        android:textColor="@color/turquoise"
+                        android:textSize="30dp"
+                        android:textStyle="bold">
 
-
-
-
-
-
+                    </TextView>
                 </LinearLayout>
+
+
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
+
+
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -45,9 +45,15 @@ public class Select_Names extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String nameselected = nameList.get(position);
                 updateNumberOfClients(nameselected);
+                Intent i= new Intent(Select_Names.this, mainchat.class);
+                i.putExtra("nameOfCounsellor",nameselected);
+                startActivity(i);
 
             }
         });
+
+
+
     }
     public void fetchNamesFromServer(final String selectedType) {
         String url = "https://lamp.ms.wits.ac.za/home/s2651487/Select_Names.php";
@@ -110,7 +116,6 @@ public class Select_Names extends AppCompatActivity {
 
         queue.add(stringRequest);
     }
-
 
 }
 

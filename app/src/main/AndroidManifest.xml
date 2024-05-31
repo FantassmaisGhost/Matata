@@ -38,7 +38,8 @@
 
         <activity android:name=".editAbout"/>
 
-        <activity android:name=".mainchat" />
+        <activity android:name=".ListCounsellor"/>
+        <activity android:name=".LiestClients"/>
 
 
 

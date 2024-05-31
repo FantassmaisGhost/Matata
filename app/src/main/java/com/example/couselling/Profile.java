@@ -84,6 +84,15 @@ public class Profile extends AppCompatActivity {
         Log.d(TAG, "onCreate: Info=" +Info);
         showAbout.setText(Info);
 
+        l.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i= new Intent(Profile.this,LiestClients.class);
+                startActivity(i);
+
+            }
+        });
+
 
 
 

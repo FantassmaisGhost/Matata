@@ -2,6 +2,8 @@ package com.example.couselling;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -38,6 +40,14 @@ public class Select_Names extends AppCompatActivity {
         String selectedType = intent.getStringExtra("SELECTED_TYPE");
 
         fetchNamesFromServer(selectedType);
+        nameListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String nameselected = nameList.get(position);
+                updateNumberOfClients(nameselected);
+
+            }
+        });
     }
     public void fetchNamesFromServer(final String selectedType) {
         String url = "https://lamp.ms.wits.ac.za/home/s2651487/Select_Names.php";
@@ -71,6 +81,36 @@ public class Select_Names extends AppCompatActivity {
 
         queue.add(stringRequest);
     }
+    public void updateNumberOfClients(final String fullName) {
+        String url2 = "https://lamp.ms.wits.ac.za/home/s2651487/NumberOfClients.php";
+
+        RequestQueue queue = Volley.newRequestQueue(Select_Names.this);
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url2,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        // Handle the response if needed
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(Select_Names.this, "Error updating NumberOfClients: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                //  Add parameters (FullName) to the request
+                params.put("FullName",fullName);
+                return params;
+            }
+        };
+
+        queue.add(stringRequest);
+    }
+
 
 }
 

@@ -66,7 +66,7 @@ public class mainchat extends AppCompatActivity {
 
     private void instantiateWebSocket() {
         OkHttpClient client = new OkHttpClient();
-        Request request = new Request.Builder().url("ws://146.141.21.92:8080").build();
+        Request request = new Request.Builder().url("ws:// 146.141.21.92:8080").build();
         com.example.couselling.mainchat.SocketListener socketListener = new com.example.couselling.mainchat.SocketListener(this);
         webSocket = client.newWebSocket(request, socketListener);
     }
